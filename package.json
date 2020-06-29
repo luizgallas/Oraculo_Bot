@@ -2,14 +2,17 @@
   "name": "bot_oraculo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon bot.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "moment": "^2.27.0",
+    "random-item": "^3.0.0",
     "twit": "^2.2.11"
   }
 }
