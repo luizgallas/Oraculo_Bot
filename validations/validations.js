@@ -3,10 +3,13 @@ const { answerOptionsPT, answerOptionsEN } = require('.././constants/constants.j
 
 const validateDate = tweet => {
   const tweetDate = moment.utc(tweet.created_at, "ddd MMM DD HH:mm:ss ZZ yyyy");
-  console.log(tweetDate)
+  console.log("TweetDate:")
+  console.log(moment(tweetDate).subtract(3, 'hours'))
 
   const hours = moment.duration(moment.utc().diff(tweetDate)).asHours()
+  console.log("Time between tweet and now:")
   console.log(hours)
+
   return hours >= 0 && hours <= 1;
 }
 
