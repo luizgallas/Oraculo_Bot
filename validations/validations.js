@@ -10,10 +10,8 @@ const validateDate = tweet => {
   return hours >= 0 && hours <= 1;
 }
 
-const validateLang = tweet => {
-  const lang = tweet.lang
-
-  if (lang === 'pt' || lang === 'es') {
+const validateLang = tweetLang => {
+  if (tweetLang === 'pt' || tweetLang === 'es') {
     return answerOptionsPT
   } else {
     return answerOptionsEN

@@ -19,7 +19,7 @@ var sched = schedule.scheduleJob({ minute: scheduleTime }, function() {
         var tweetId = tweet.id_str
 
         // Verify the tweet language to choose between portugues or english list of answerOptions
-        var answerOptions = validateLang(tweet)
+        var answerOptions = validateLang(tweet.lang)
 
         // Tweet operation replying the user who mention the bot with one random answer
         T.post('statuses/update', { in_reply_to_status_id: tweetId, status: `@${userName} ${randomItem(answerOptions)}` },
