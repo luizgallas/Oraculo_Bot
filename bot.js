@@ -2,9 +2,11 @@ const twit = require('twit')
 const randomItem = require('random-item')
 const schedule = require('node-schedule')
 const { validateDate, validateLang } = require('./validations/validations.js')
+const dotenv = require('dotenv')
+dotenv.config()
 const config = require('./config/config.js')
 const { scheduleTime, tweetsMaxQuantity, actualDate } = require('./constants/constants.js')
-var T = new twit(config)
+const T = new twit(config)
 
 var sched = schedule.scheduleJob({ minute: scheduleTime }, function() {
   // Search operation, look for all iterations with @BotOraculo
@@ -29,5 +31,5 @@ var sched = schedule.scheduleJob({ minute: scheduleTime }, function() {
       }
     })
   })
-})})
+})
 
