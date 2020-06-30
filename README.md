@@ -1,4 +1,4 @@
-### Oraculo_Bot
+# Oraculo_Bot
 
 -----
 
@@ -6,6 +6,6 @@
 
 -----
 
-# O script roda de hora em hora e tem limite de 100 tweets por iteração.
+#### O script roda de hora em hora e tem limite de 100 tweets por iteração.
 
 - [Bot_Oráculo](https://twitter.com/BotOraculo)
