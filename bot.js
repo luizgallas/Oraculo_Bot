@@ -7,11 +7,10 @@ const { validateDate, validateLang } = require('./validations/validations.js')
 const config = require('./config/config.js')
 const { scheduleTime, tweetsMaxQuantity, actualDate } = require('./constants/constants.js')
 const T = new twit(config)
-const express = require('express')
-const app = express()
+const http = require('http')
 
-var sched = schedule.scheduleJob({ minute: scheduleTime }, function() {
-  app.post('/', (req, res) => {
+// var sched = schedule.scheduleJob({ minute: scheduleTime }, function() {
+  http.createServer(function(request, response) {
     // Search operation, look for all iterations with @BotOraculo
     T.get('search/tweets', { q: `@BotOraculo since:${actualDate}`, count: tweetsMaxQuantity})
           .then(function (response) {
@@ -34,8 +33,7 @@ var sched = schedule.scheduleJob({ minute: scheduleTime }, function() {
         }
       })
     })
-  })
-})
+  }).listen(process.env.PORT || 3000)
+// })
 
-app.listen(process.env.PORT || 3000)
 
