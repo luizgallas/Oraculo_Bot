@@ -6,7 +6,7 @@ const config = require('./config/config.js')
 const { scheduleTime, tweetsMaxQuantity, actualDate } = require('./constants/constants.js')
 var T = new twit(config)
 
-// var sched = schedule.scheduleJob({ minute: scheduleTime }, function() {
+var sched = schedule.scheduleJob({ minute: scheduleTime }, function() {
   // Search operation, look for all iterations with @BotOraculo
   T.get('search/tweets', { q: `@BotOraculo since:${actualDate}`, count: tweetsMaxQuantity})
         .then(function (response) {
@@ -29,5 +29,5 @@ var T = new twit(config)
       }
     })
   })
-// })})
+})})
 
