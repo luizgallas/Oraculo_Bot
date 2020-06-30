@@ -1,26 +1,26 @@
-var twit = require('twit')
-const moment = require('moment')
-var config = require('./config/config.js')
+const twit = require('twit')
 const randomItem = require('random-item')
-var responseList = require('./constants/constants.js')
-var schedule = require('node-schedule')
-var filterDate = require('./validations/validateDate')
-
+const schedule = require('node-schedule')
+const validateDate = require('./validations/validations.js')
+const config = require('./config/config.js')
+const { answerOptions, scheduleTime, tweetsMaxQuantity, actualDate } = require('./constants/constants.js')
 var T = new twit(config)
-var date = moment().format("YYYY-MM-DD")
 
-var sched = schedule.scheduleJob({minute: 59}, function() {
-  T.get('search/tweets', { q: `@BotOraculo since:${date}`, count: 100 }).then(function (response) {
-    console.log(response)
+var sched = schedule.scheduleJob({ minute: scheduleTime }, function() {
+  T.get('search/tweets', { q: `@BotOraculo since:${actualDate}`, count: tweetsMaxQuantity})
+        .then(function (response) {
+    console.log(response.data)
     
     response.data.statuses.forEach(tweet => {
-      var userName = tweet.user.screen_name
-      var tweetId = tweet.id_str
+      if(validateDate(tweet) === true) {
+        var userName = tweet.user.screen_name
+        var tweetId = tweet.id_str
 
-      T.post('statuses/update', { in_reply_to_status_id: tweetId, status: `@${userName} ${randomItem(responseList)}` },
-        (err, data, response) => {
-          response.sendStatus(200)
+        T.post('statuses/update', { in_reply_to_status_id: tweetId, status: `@${userName} ${randomItem(answerOptions)}` },
+          (err, data, response) => {
+            console.log(data)
         }) 
+      }
     })
   })
 })
