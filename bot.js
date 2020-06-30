@@ -10,8 +10,8 @@ const T = new twit(config)
 const express = require('express')
 const app = express()
 
-app.post('/', (req, res) => {
-  var sched = schedule.scheduleJob({ minute: scheduleTime }, function() {
+var sched = schedule.scheduleJob({ minute: scheduleTime }, function() {
+  app.post('/', (req, res) => {
     // Search operation, look for all iterations with @BotOraculo
     T.get('search/tweets', { q: `@BotOraculo since:${actualDate}`, count: tweetsMaxQuantity})
           .then(function (response) {
