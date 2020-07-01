@@ -8,8 +8,4 @@
 
 ------------------------------------------
 
-#### O script roda de hora em hora e tem limite de 100 tweets por iteração.
----
-#### The script run once a hour and limits 100 tweets per iteration.
-
 - [Bot_Oráculo](https://twitter.com/BotOraculo)
