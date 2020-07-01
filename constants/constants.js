@@ -1,5 +1,3 @@
-const moment = require('moment')
-
 // Possible answers used by Oraculo in portuguese
 const answerOptionsPT = ['Sim!', 'Definitivamente sim!', 'Me parece que não',
    'Definitivamente não!', 'Não!']
@@ -8,19 +6,15 @@ const answerOptionsPT = ['Sim!', 'Definitivamente sim!', 'Me parece que não',
 const answerOptionsEN = ['Yes!', 'Definitely yes!', 'I dont think so',
    'Definitely no!', 'No!']
 
-// Schedule timer in minutes
-const scheduleTime = 59
+// Actual bot twitter username
+const botUserName = 'BotOraculo'
 
-// Maximum tweets limitation per search/hour
-const tweetsMaxQuantity = 100
-
-// Actual date for daily search
-var actualDate = moment().format("YYYY-MM-DD")
+// Wait time between iterations
+const waitTime = 10000
 
 module.exports = {
    answerOptionsPT,
    answerOptionsEN,
-   scheduleTime,
-   tweetsMaxQuantity,
-   actualDate
+   botUserName,
+   waitTime
 }
