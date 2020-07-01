@@ -9,7 +9,7 @@ const answerOptionsEN = ['Yes!', 'Definitely yes!', 'I dont think so',
    'Definitely no!', 'No!']
 
 // Schedule timer in minutes
-const scheduleTime = 15
+const scheduleTime = 59
 
 // Maximum tweets limitation per search/hour
 const tweetsMaxQuantity = 100
